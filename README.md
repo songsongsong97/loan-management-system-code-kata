@@ -14,25 +14,31 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+[API routes](https://nextjs.org/docs/api-routes/introduction) are as follows:
+* GET [http://localhost:3000/api/applications](http://localhost:3000/api/applications). This endpoint can be edited in `pages/api/applications/index.ts`.
+
+* DELETE [http://localhost:3000/api/applications/<applicationId>](http://localhost:3000/api/applications/<applicationId>). This endpoint can be edited in `pages/api/applications/[applicationId].ts`.
+
+* POST [http://localhost:3000/api/decision_engine](http://localhost:3000/api/decision_engine). This endpoint can be edited in `pages/api/decision_engine.ts`.
+
+* GET [http://localhost:3000/api/balance_sheet](http://localhost:3000/api/balance_sheet). This endpoint can be edited in `pages/api/balance_sheet.ts`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Test the System
 
-To learn more about Next.js, take a look at the following resources:
+Please use the following combination to test.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+[
+    {
+        "company":"ABC","accountingProvider:"Xero"
+    },
+    {
+        "company":"XYZ","accountingProvider:"MYOB"
+    }
+]
+```
+To add more test cases, please modify `config/sheet.tsx`
