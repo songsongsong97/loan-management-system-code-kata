@@ -1,4 +1,4 @@
-# Loan Application System 
+# Loan Management System 
 
 ## Setup and Run in Local Environment
 Backend Flask API
