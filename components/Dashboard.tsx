@@ -58,7 +58,8 @@ const Dashboard: React.FC<DashboardProps> = ({
   const handleDelete = async (id: string) => {
     try {
       setIsLoading(true);
-      const url = `/api/applications/${id}`;
+      // const url = `/api/applications/${id}`;
+      const url = `http://localhost:5000/applications/${id}`;
       await axios.delete(url);
       toast.success("Successfully deleted application");
       getData();
@@ -72,9 +73,14 @@ const Dashboard: React.FC<DashboardProps> = ({
 
   const getData = useCallback(async () => {
     setIsLoading(true);
-    const url = "/api/applications";
+    const url = "http://localhost:5000/applications";
     await axios
-      .get(url)
+      .get(url, {
+        headers: {
+          "Acess-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "Content-Type",
+        },
+      })
       .then((response) => {
         const data = response?.data;
         setTbodyContent(

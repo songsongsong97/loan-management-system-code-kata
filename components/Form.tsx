@@ -30,12 +30,14 @@ const Form = () => {
   const HEADER = ["Month", "Profit Or Loss (SGD)", "Assets Value (SGD)"];
   const onFetch = useCallback(async () => {
     setIsLoading(true);
-    const url = `/api/balance_sheet?provider=${provider}&company=${company}&amount=${amount}`;
+    // const url = `/api/balance_sheet?provider=${provider}&company=${company}&amount=${amount}`;
+    const url = `http://localhost:5000/balance_sheet?provider=${provider}&company=${company}&amount=${amount}`;
     await axios
       .get(url)
       .then((response) => {
         const resp = response?.data;
-        setTableContent(resp?.data);
+        // setTableContent(resp?.data);
+        setTableContent(resp?.data?.data);
         setTableFooter({
           totalAssetsValue: resp?.totalAssetsValue,
           totalProfitOrLoss: resp?.totalProfitOrLoss,
@@ -55,7 +57,8 @@ const Form = () => {
 
   const onSubmit = useCallback(async () => {
     setIsLoading(true);
-    const url = "/api/decision_engine";
+    // const url = "/api/decision_engine";
+    const url = "http://localhost:5000/decision_engine";
     const body = {
       preAssessment: preAssessment,
       company: company,
