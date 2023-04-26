@@ -2,12 +2,18 @@ version: '3.8'
 services:
   web:
     build:
-      context: ./
+      context: ./frontend
       target: runner
     volumes:
-      - .:/app
+      - ./frontend:/app
     command: npm run dev
     ports:
       - "3000:3000"
     environment:
       NODE_ENV: development
+  api:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/code 
